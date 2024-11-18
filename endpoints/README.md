@@ -1,4 +1,4 @@
-# Supabase Cloud Functions
+# Server-Side Functions and Endpoints
 
 This repository contains Cloud Functions (λ) deployed on Supabase, with each function handling service management by providing a gateway to OneAuthX - A Third Party Authenticator. The functions are available in the directory `supabase/functions/`.
 
