@@ -1,14 +1,13 @@
 import { initializeApp } from "firebase/app";
-require('dotenv').config();
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID
+  apiKey: "AIzaSyB0vBXNid_VNgQ67HVgXom-wCwlibBaicc",
+  authDomain: "one-authx.firebaseapp.com",
+  databaseURL: "https://one-authx-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "one-authx",
+  storageBucket: "one-authx.firebasestorage.app",
+  messagingSenderId: "118161223870",
+  appId: "1:118161223870:web:6ed8ebfc43b262f7136eef"
 };
 
 const app = initializeApp(firebaseConfig);

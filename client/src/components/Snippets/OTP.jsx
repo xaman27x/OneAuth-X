@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getDatabase, ref, set, remove, get } from 'firebase/database'; // Import 'remove' to clear data
+import { getDatabase, ref, set, remove, get } from 'firebase/database'; 
 import app from '../../firebase';
 
 const database = getDatabase(app);
@@ -45,33 +45,26 @@ const OTP = ({ service, userID, isActive }) => {
     let countdown = null;
 
     if (isActive) {
-      // Function to generate and post OTP
       const generateAndPostOTP = () => {
         const otp = getRandomInteger(100000, 999999);
         setCurrOTP(otp);
-        setTimer(30); // Reset timer to 30 seconds when OTP is generated
+        setTimer(30);
         postOneTimePass(service, otp, userID);
       };
 
-      // Generate initial OTP and post it
       generateAndPostOTP();
 
-      // Set up interval to generate and post OTP every 30 seconds
       interval = setInterval(() => {
         generateAndPostOTP();
       }, 30000);
 
-      // Timer countdown logic
       countdown = setInterval(() => {
         setTimer((prev) => (prev > 0 ? prev - 1 : 0));
       }, 1000);
     } else {
-      // Clear OTP from database when toggled off
       setCurrOTP(null);
       clearOneTimePass(service, userID);
     }
-
-    // Cleanup intervals when component unmounts or `isActive` changes
     return () => {
       clearInterval(interval);
       clearInterval(countdown);
@@ -84,7 +77,10 @@ const OTP = ({ service, userID, isActive }) => {
         {currOTP !== null ? currOTP : 'Toggle'}
       </h2>
       {isActive && (
-        <p className="text-sm text-gray-500">Time left: {timer}s</p>
+        <div className='flex flex-auto'>
+        <p className="flex mr-1 text-sm text-gray-500">Time left:</p>
+        <p className="flex text-sm text-gray-500">{timer}s</p>
+        </div>
       )}
     </div>
   );

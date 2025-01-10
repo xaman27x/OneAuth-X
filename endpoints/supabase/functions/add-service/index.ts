@@ -3,6 +3,7 @@ import { getFirestore, collection, updateDoc, doc, query, where, getDocs, arrayU
 import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js';
 import { serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.8.0/firebase-database.js';
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: Deno.env.get("FIREBASE_API_KEY")!,
   authDomain: Deno.env.get("FIREBASE_AUTH_DOMAIN")!,
@@ -18,7 +19,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const serviceRef = collection(db, "Services");
 
-
+// Function to register service
 async function registerService(email: string, password: string, service: string): Promise<boolean> {
   try {
     const userCred = await signInWithEmailAndPassword(auth, email, password);
@@ -28,18 +29,19 @@ async function registerService(email: string, password: string, service: string)
 
     if (!querySnapshot.empty) {
       const docRef = doc(db, "Services", querySnapshot.docs[0].id);
+      // Use arrayUnion to add the new service to the Services array
       await updateDoc(docRef, {
         Services: arrayUnion(service)
       });
       console.log("Service added successfully!");
-      return true;
+      return true;  // Success
     } else {
       console.log("No document found for this user.");
-      return false;
+      return false; // Failure - User's document not found
     }
   } catch (e) {
     console.error("Error adding service:", e);
-    return false; 
+    return false; // Failure - Error occurred
   }
 }
 

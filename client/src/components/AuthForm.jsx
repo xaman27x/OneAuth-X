@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import app from '../firebase'; 
-import { getFirestore, collection, addDoc, query, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from "react-router-dom";
+import Spinner from './Snippets/Spinner';
 
 
 const auth = getAuth(app);
@@ -11,11 +12,14 @@ const userRef = collection(db, "Users");
 
 const AuthForm = () => {
   const navigate = useNavigate();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true); 
   const [error, setError] = useState('');
+  const [authToggle, setAuthToggle] = useState(false);
 
+  const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
@@ -24,12 +28,14 @@ const AuthForm = () => {
     setError(''); 
 
     if (isLogin) {
+      setAuthToggle(true);
       signInWithEmailAndPassword(auth, email, password)
         .then((userCred) => {
           console.log('Logged in:', userCred.user.email);
           navigate('/homepage');
         })
         .catch((err) => {
+          setAuthToggle(false);
           setError('Login failed. Please check your credentials.');
           console.error(err);
         });
@@ -39,9 +45,11 @@ const AuthForm = () => {
           console.log('Registered:', userCred.user.email);
           let userData = {
             'UserID': userCred.user.uid,
-            'EmailID': email
+            'EmailID': email,
+            'Name': name
           };
           addDoc(userRef, userData);
+          navigate('/homepage');
         })
         .catch((err) => {
           setError('Registration failed. Please check your details.');
@@ -51,7 +59,7 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-500 via-blue-600 to-indigo-700">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
           {isLogin ? 'Login' : 'Register'}
@@ -65,9 +73,21 @@ const AuthForm = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email Address
-            </label>
+         {!isLogin &&  <label className="block text-sm font-medium text-gray-700 mb-1">
+              Name
+            </label> }
+            {!isLogin && <input
+              value={name}
+              onChange={handleNameChange}
+              id="email"
+              placeholder="Enter your name"
+              className="mb-4 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          }
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          Email Address
+        </label>
             <input
               value={email}
               onChange={handleEmailChange}
@@ -78,7 +98,6 @@ const AuthForm = () => {
               required
             />
           </div>
-
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
               Password
@@ -100,6 +119,7 @@ const AuthForm = () => {
           >
             {isLogin ? 'Login' : 'Register'}
           </button>
+          {authToggle && <Spinner />}
         </form>
 
         <div className="flex justify-center items-center mt-6">
