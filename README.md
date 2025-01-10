@@ -28,14 +28,6 @@ root/
 - Uses `POST` requests to ensure secure data transfer.
 
 ---
-
-## Getting Started
-
-### Prerequisites
-- **Node.js**: Install [Node.js](https://nodejs.org/) (v16 or later).
-- **Database**: Ensure access to a real-time database like Firebase.
-- **HTTP Client**: Postman or curl for testing the endpoints.
-
 ### Installation
 1. Clone the repository:
    ```bash
