@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# OneAuth-X Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The **OneAuth-X Client** is the frontend application for the OneAuth-X authenticator. It offers a seamless user experience for authentication, profile customization, and homepage interactions. Built with modern web technologies and Firebase services, it provides secure and dynamic functionality.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### 🔑 Login via Firebase Auth
+- Secure user authentication using Firebase Authentication.
+- Supports email/password login and social logins (if configured).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🏠 Homepage
+- Displays active pages and services linked to the user's account.
+- Dynamic updates from Firebase Realtime Database and Firestore.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ✏️ Profile Customization
+- Users can update their personal information and preferences.
+- Images and files stored securely in Cloud Storage.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `npm run build`
+### Core Technologies
+- **ReactJS**: Frontend framework for building dynamic UIs.
+- **TailwindCSS**: Utility-first CSS framework for styling.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Firebase Integration
+- **Firebase Authentication**: User login and session management.
+- **Firebase Realtime Database**: Storing and retrieving active page data.
+- **Firestore**: Managing structured profile and user-specific data.
+- **Cloud Storage**: Secure file uploads for profile images and assets.
+- **Cloud Functions**: Serverless functions for backend logic.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running the Client
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+2. Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Folder Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+client/
+├── public/               # Static assets
+├── src/
+├── ├── assets/           # COntains the Static Multimedia of the Website
+│   ├── components/       # Reusable React components
+│   ├── pages/            # Page-specific components (Login, Homepage, Profile)
+│   ├── context/          # Context API for global state
+│   ├── firebase/         # Firebase configuration and integration
+│   ├── utils/            # Utility functions
+│   ├── App.js            # Main app component
+│   ├── index.js          # Entry point
+│   └── index.css         # Global styles
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## Scripts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Available Scripts
+- `npm start`: Start the development server.
+- `npm run build`: Build the app for production.
+- `npm test`: Run tests.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Deployment
+This website is deployed on *Google Cloud Platform (GCP)*
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add feature-name"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a Pull Request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Acknowledgments
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **React**: For making frontend development simple and powerful.
+- **TailwindCSS**: For its utility-first approach to styling.
+- **Firebase**: For its seamless backend and cloud integration.
+```

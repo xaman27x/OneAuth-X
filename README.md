@@ -1,6 +1,6 @@
-# 0neAuthX
+# OneAuth-X
 
-0neAuthX is a third-party authenticator designed to simplify and secure authentication workflows. It includes a **frontend client** and **backend endpoints** that interact with a real-time database to verify OTPs.
+OneAuth-X is a third-party authenticator designed to simplify and secure authentication workflows. It includes a **frontend client** and **backend endpoints** that interact with a real-time database to verify OTPs.
 
 ---
 
@@ -32,7 +32,7 @@ root/
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/0neAuthX.git
-   cd 0neAuthX
+   cd 0neAuth-X
    ```
 
 2. Navigate to the **client** directory and install dependencies:
