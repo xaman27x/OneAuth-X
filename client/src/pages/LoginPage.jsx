@@ -5,7 +5,7 @@ import AuthForm from '../components/AuthForm'
 const LoginPage = () => {
   return (
     <>
-    <Header />
+    <Header isRoot={true}/>
     <AuthForm />
     </>
   )

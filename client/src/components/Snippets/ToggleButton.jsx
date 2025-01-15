@@ -4,7 +4,7 @@ const ToggleButton = ({ isToggled, onToggle }) => {
   return (
     <button
       onClick={onToggle}
-      className={`relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none ${
+      className={`flex ml-10 flex-row items-center h-6 rounded-full w-11 transition-colors focus:outline-none ${
         isToggled ? 'bg-green-500' : 'bg-gray-300'
       }`}
     >

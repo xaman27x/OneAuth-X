@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import Header from '../components/Headers/Header';
 import app from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const auth = getAuth(app);
 
 const PassResetPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [resetStatus, setResetStatus] = useState(false);
   const handleEmailChange = (e) => {
@@ -26,7 +28,7 @@ const PassResetPage = () => {
   return (
     <>
     <Header />
-    <div className='flex justify-center items-center h-screen bg-gray-100'>
+    <div className='flex justify-center items-center h-screen bg-gradient-to-br from-purple-500 via-blue-600 to-indigo-700'>
       <div className='w-full max-w-md bg-white rounded-lg shadow-md p-8'>
         <h2 className='flex flex-row w-full justify-center text-2xl font-bold mb-5'>Send Reset Link</h2>
         <form className='space-y-6'>
@@ -40,6 +42,10 @@ const PassResetPage = () => {
             A Reset Link has been sent to your mail.
             </h2>
           }
+          </div>
+          <div className='flex flex-row space-x-1 justify-center font-semibold'>
+          <p className='text-gray-700'>Go to the Login Page?: </p>
+          <p className='text-blue-600 hover:cursor-pointer hover:underline' onClick={() => navigate('/')}>Login</p>
           </div>
         </form>
       </div>

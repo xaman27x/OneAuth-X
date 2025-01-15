@@ -22,19 +22,19 @@ const ServicesBuilder = ({ Services }) => {
       {servicesArray.map((service, index) => (
         <div
           key={index}
-          className="bg-white shadow-md rounded-lg p-6 flex items-center justify-between hover:shadow-lg transition-shadow duration-300"
+          className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-between"
         >
+          {/* Service Name */}
           <div>
-            <h2 className="text-xl font-semibold text-gray-800">{service}</h2>
+          <h2 className="text-lg font-semibold text-gray-800">{service}</h2>
           </div>
 
+          {/* Toggle and OTP Components */}
           <div className="flex items-center space-x-4">
-            {/* Toggle button to control OTP generation */}
             <ToggleButton
               isToggled={toggleStates[service] || false}
               onToggle={() => handleToggle(service)}
             />
-
             <OTP
               userID={auth.currentUser.uid}
               service={service}
