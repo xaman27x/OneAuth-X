@@ -131,9 +131,9 @@ This function verifies a One-Time Password (OTP) for a specific service tied to 
 
 Below are the endpoints for the functions:
 
-- **add-service**: `POST https://<your-supabase-endpoint>/functions/v1/add-service`
-- **check-service**: `POST https://<your-supabase-endpoint>/functions/v1/check-service`
-- **verify-otp**: `POST https://<your-supabase-endpoint>/functions/v1/verify-otp`
+- **add-service**: `https://khbpumgtlccpgjkhhetq.supabase.co/functions/v1/add-service`
+- **check-service**: `POST https://khbpumgtlccpgjkhhetq.supabase.co/functions/v1/check-service`
+- **verify-otp**: `POST https://khbpumgtlccpgjkhhetq.supabase.co/functions/v1/verify-otp`
 
 ### JWT Verification
 
@@ -156,4 +156,7 @@ This allows the functions to be accessed without requiring a JWT token.
 This project is licensed under the MIT License.
 
 ## Creator
-This project is developed and maintained by [Aman Morghade](www.github.com/xaman27x)
+This project is developed and maintained by <a href="https://github.com/xaman27x" target="_blank">Aman Morghade</a>.
+
+
+
